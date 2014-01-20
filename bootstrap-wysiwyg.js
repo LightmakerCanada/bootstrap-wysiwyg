@@ -20,12 +20,13 @@
 	};
 	$.fn.wysiwyg = function (userOptions) {
 		var editor = this,
+			wrapper = $(editor).parent(),
 			selectedRange,
 			options,
 			toolbarBtnSelector,
 			updateToolbar = function () {
 				if (options.activeToolbarClass) {
-					$(options.toolbarSelector).find(toolbarBtnSelector).each(function () {
+					$(options.toolbarSelector, wrapper).find(toolbarBtnSelector).each(function () {
 						var command = $(this).data(options.commandRole);
 						if (document.queryCommandState(command)) {
 							$(this).addClass(options.activeToolbarClass);
